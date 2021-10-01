@@ -93,7 +93,7 @@ export default function Wallet() {
     loadExpenses();
   }, []);
 
-  return(
+  return (
     <>
       <GlobalStyle/>
       <Menu
@@ -111,7 +111,10 @@ export default function Wallet() {
           <Options
             menuOpen={onMenu}
             section={sectionOpened}
-            setSection={(section) => setSectionOpened(section)}
+            setSection={(section) => {
+              setSectionOpened(section);
+              setAddForm(false);
+            }}
           />
         </div>
       </Menu>
@@ -134,26 +137,32 @@ export default function Wallet() {
                 </div>
               </div>
             </div>
-          </div>
+        </div>
         </AddButton>
       )}
       <ExpensesBox menuOpen={onMenu}>
         {sectionOpened === 'main' ? (
           <div className="expenses">
-            <div className="title">DESPESAS</div>
-            <div className="header">
-              <div className="name">Nome</div>
-              <div className="name">Categoria</div>
-              <div className="value">Valor</div>
-              <div className="date">Data</div>
-              <div className="placeholder"></div>
-            </div>
+            {expenses.length > 0 ? (
+              <>
+                <div className="title">DESPESAS</div>
+                <div className="header">
+                  <div className="name">Nome</div>
+                  <div className="name">Categoria</div>
+                  <div className="value">Valor</div>
+                  <div className="date">Data</div>
+                  <div className="placeholder"></div>
+                </div>
+              </>
+            ) : (
+              <div className="empty title">Ainda não há nenhuma despesa cadastrada.</div>
+            )}
             {addForm &&
-            <Expense
-              addMode
-              onSubmit={(data) => addExpense(data)}
-              closeForm={() => setAddForm(false)}
-            />
+              <Expense
+                addMode
+                onSubmit={(data) => addExpense(data)}
+                closeForm={() => setAddForm(false)}
+              />
             }
             {expenses.map((data, index) => (
               <Expense
@@ -166,15 +175,28 @@ export default function Wallet() {
               />
             ))}
           </div>
-        ) : sectionOpened === 'charts' ? (
-          <Charts
-            data={expenses}
-          />
-        ) : (
-          <About
-            menuOpen={onMenu}
-          />
-        )}
+        ) : sectionOpened === 'charts' ? 
+            (expenses.length > 0 ? (
+              <Charts
+                data={expenses}
+              />
+            ) : (
+              <div className="empty title">
+{                "Ainda não há nenhuma despesa cadastrada. "}
+                <a onClick={() => {
+                  setSectionOpened('main');
+                  setAddForm(true);
+                }}
+                >
+                  Adicione aqui
+                </a>
+              </div>
+            )
+            ) : (
+              <About
+                menuOpen={onMenu}
+              />
+            )}
       </ExpensesBox>
     </>
   )

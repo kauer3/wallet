@@ -2,11 +2,11 @@ import styled, {keyframes} from 'styled-components'
 
 const loadExpense = keyframes`
   0% {
-    transform: scale(0);
+    transform: scale(0) translate(0, 100vh);
     opacity: 0;
   }
   100% {
-    transform: scale(1);
+    transform: scale(1) translate(0);
     opacity: 1;
   }
 `

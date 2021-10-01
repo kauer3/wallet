@@ -1,6 +1,6 @@
 import styled, {keyframes} from 'styled-components'
 
-const loadAbout = keyframes`
+const fadeIn = keyframes`
   0% {
     opacity: 0;
   }
@@ -19,7 +19,7 @@ export const AboutContainer = styled.div`
   font-family: Arial, sans-serif;
   text-align: justify;
   index-z: -1;
-  animation: ${loadAbout};
+  animation: ${fadeIn};
   animation-duration: 1.8s;
   animation-timing-function: ease-out;
   transform: ${props => props.menu ? 'translate(100px)' : 'none'};

@@ -1,6 +1,16 @@
-import styled, {createGlobalStyle} from 'styled-components'
+import styled, {keyframes, createGlobalStyle} from 'styled-components'
 
-// import {menuIcon} from '../../assets/menuIcon.png';
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
 
 export const Menu = styled.div`
   z-index: 1;
@@ -96,6 +106,36 @@ export const ExpensesBox = styled.div`
   text-align: center;
   transition: ease-in-out .5s;
   padding-bottom: 20px;
+
+  .title {
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: #2b2b3a;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  .empty {
+    margin-top: 35vh;
+    animation: ${fadeIn};
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    a {
+      cursor: pointer;
+      color: #2b7b8a;
+
+      :hover {
+        color: #2b9baa;
+      }
+    }
+  }
+
   .expenses {
     transition: ease-in-out .5s;
     transform: ${props => props.menuOpen ? 'translate(15vh)' : 'none'};
@@ -105,15 +145,6 @@ export const ExpensesBox = styled.div`
     flex-wrap: no-wrap;
     text-align: center;
     gap: 20px;
-
-    .title {
-      font-family: Arial, sans-serif;
-      font-size: 30px;
-      font-weight: bold;
-      color: #2b2b3a;
-      margin-top: 60px;
-      margin-bottom: 40px;
-    }
 
     .header {
       font-family: Arial, sans-serif;
