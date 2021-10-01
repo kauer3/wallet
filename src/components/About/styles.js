@@ -15,7 +15,7 @@ export const AboutContainer = styled.div`
   background: ${props => props.menu ? 'green' : 'none'}%;
   padding: 7vh 5%;
   font-size: 25px;
-  color: #050505;
+  color: #2b2b3a;
   font-family: Arial, sans-serif;
   text-align: justify;
   index-z: -1;

@@ -119,7 +119,13 @@ export default function Wallet() {
         <AddButton>
           <div
             className="back"
-            onClick={() => setAddForm(true)}
+            onClick={() =>  {
+              window.scroll({
+                top: 0,
+                behavior: 'smooth'
+              });
+              setAddForm(true)
+            }}
           >
             <div className="mid">
               <div className="front">

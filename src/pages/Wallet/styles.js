@@ -110,15 +110,16 @@ export const ExpensesBox = styled.div`
       font-family: Arial, sans-serif;
       font-size: 30px;
       font-weight: bold;
-      color: #333;
+      color: #2b2b3a;
       margin-top: 60px;
       margin-bottom: 40px;
     }
 
     .header {
       font-family: Arial, sans-serif;
-      font-size: 20px;
-      color: #333;
+      font-size: 1.5vw;
+      color: #2b2b3a;
+      font-weight: bold;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
@@ -147,7 +148,7 @@ export const AddButton = styled.div`
   }
 
   .back {
-    position: absolute;
+    position: fixed;
     top: 50px;
     right: 50px;
 
