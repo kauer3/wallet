@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
 
-import { toast } from 'react-toastify';
-
 import Options from '../../components/Options/';
 import Expense from '../../components/Expense/';
 import Charts from '../../components/Charts/';
@@ -27,7 +25,6 @@ export default function Wallet() {
   const [sectionOpened, setSectionOpened] = useState('main');
 
   const loadExpenses = async () => {
-    toast.success('Despesa adicionada!');
     try {
       const response = await api.get(`/expenses?page=${page}&perPage=20`);
       setExpenses(response.data);
@@ -47,12 +44,10 @@ export default function Wallet() {
         }
       });
       console.log(response);
-      // toast.success('Despesa adicionada!');
       setAddForm(false);
       loadExpenses();
     } catch (err) {
       console.log(err);
-      toast.error('Ocorreu um erro ao adicionar a despesa.');
     }
   }
 
@@ -67,12 +62,10 @@ export default function Wallet() {
         }
       });
       console.log(response);
-      toast.success('Despesa adicionada!');
       loadExpenses();
       return true;
     } catch (err) {
       console.log(err);
-      toast.error('Ocorreu um erro ao adicionar a despesa.');
       return false;
     }
   }
@@ -81,11 +74,9 @@ export default function Wallet() {
     try {
       const response = await api.delete(`/expenses/${id}`)
       console.log(response);
-      toast.success('Despesa excluída!');
       loadExpenses();
     } catch (err) {
       console.log(err);
-      toast.error('Ocorreu um erro ao excluir a despesa.');
     }
   }
 
